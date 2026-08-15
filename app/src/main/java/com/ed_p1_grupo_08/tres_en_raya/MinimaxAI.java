@@ -27,6 +27,30 @@ public class MinimaxAI {
 
             int minUtilidadFamilia = Integer.MAX_VALUE;
 
+            if (posiblesJugadasOponente.isEmpty()) {
+                minUtilidadFamilia = calculadora.evaluar(jugadaPC, jugadorPC, oponente);
+            } else {
+                for (Tablero jugadaOponente : posiblesJugadasOponente) {
+                    TreeNode<Tablero> nodoOponente = new TreeNode<>(jugadaOponente);
 
+                    int utilidad = calculadora.evaluar(jugadaOponente, jugadorPC, oponente);
+                    nodoOponente.setUtilidad(utilidad);
+                    nodoPC.addHijo(nodoOponente);
+
+                    if (utilidad < minUtilidadFamilia) {
+                        minUtilidadFamilia = utilidad;
+                    }
+                }
+            }
+
+            nodoPC.setUtilidad(minUtilidadFamilia);
+
+            if (minUtilidadFamilia > maxUtilidadMinima) {
+                maxUtilidadMinima = minUtilidadFamilia;
+                mejorJugada = jugadaPC;
+            }
+        }
+
+        return mejorJugada;
     }
 }

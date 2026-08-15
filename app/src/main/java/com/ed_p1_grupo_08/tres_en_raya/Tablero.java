@@ -12,8 +12,8 @@ public class Tablero {
         celdas= new EstadoCelda[9];
         for (int i= 0; i<celdas.length; i++) {
             celdas[i] = EstadoCelda.VACIO;
-            ocupadas = 0;
         }
+        ocupadas = 0;
     }
     public Tablero(EstadoCelda[] c, int o){ // para clonar tablero
         this.celdas = c.clone();

@@ -20,7 +20,7 @@ public class TreeNode<T> {
     public List<TreeNode<T>> getHijos() {
         return hijos;
     }
-    public void addChild(TreeNode<T> hijo) {
+    public void addhijo(TreeNode<T> hijo) {
         this.hijos.add(hijo);
     }
     public int getUtility() {

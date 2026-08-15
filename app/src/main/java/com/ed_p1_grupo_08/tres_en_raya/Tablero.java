@@ -1,5 +1,8 @@
 package com.ed_p1_grupo_08.tres_en_raya;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Tablero {
 
     EstadoCelda[] celdas;
@@ -18,5 +21,9 @@ public class Tablero {
 
     public Tablero clonarTablero(){return new Tablero(this.celdas, this.ocupadas);}
 
+    public List<Tablero> generarSucesores(){
+            List<Tablero> resultado = new ArrayList<>();
+            return resultado;
+    }
 
 }

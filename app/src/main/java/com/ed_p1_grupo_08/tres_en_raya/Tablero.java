@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Tablero {
 
-    EstadoCelda[] celdas;
-    int ocupadas;
+    private EstadoCelda[] celdas;
+    private int ocupadas;
 
     public Tablero(){
         celdas= new EstadoCelda[9];
@@ -15,6 +15,8 @@ public class Tablero {
         }
         ocupadas = 0;
     }
+
+    public EstadoCelda[] getCeldas(){return this.celdas;}
     public Tablero(EstadoCelda[] c, int o){ // para clonar tablero
         this.celdas = c.clone();
         this.ocupadas = o;
@@ -23,8 +25,17 @@ public class Tablero {
 
     public Tablero clonarTablero(){return new Tablero(this.celdas, this.ocupadas);}
 
-    public List<Tablero> generarSucesores(){
+    public List<Tablero> generarSucesores(Jugador j){
             List<Tablero> resultado = new ArrayList<>();
+            if (!isFull()){ //se puede agregar
+                EstadoCelda c = j.getSimbolo();
+
+                for (int i= 0; i< celdas.length; i++){
+                    Tablero clon= clonarTablero();
+                    if (celdas[i]==EstadoCelda.VACIO){clon.getCeldas()[i]= c;}
+                }
+            }
+
             return resultado;
     }
 

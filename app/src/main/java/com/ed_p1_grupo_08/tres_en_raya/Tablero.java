@@ -2,14 +2,15 @@ package com.ed_p1_grupo_08.tres_en_raya;
 
 public class Tablero {
 
-    int[] celdas;
+    EstadoCelda[] celdas;
     int ocupadas;
 
     public Tablero(){
-        celdas= new int[9];
+        celdas= new EstadoCelda[9];
+        for (int i= 0; i<celdas.length; i++) celdas[i]= EstadoCelda.VACIO;
         ocupadas= 0;
     }
-    public Tablero(int[] c, int o){ // para clonar tablero
+    public Tablero(EstadoCelda[] c, int o){ // para clonar tablero
         celdas= c;
         ocupadas= o;
     }

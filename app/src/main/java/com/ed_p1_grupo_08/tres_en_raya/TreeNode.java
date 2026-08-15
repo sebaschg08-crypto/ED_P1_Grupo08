@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 public class TreeNode<T> {
     private T data;
-    private List<TreeNode<T>> children;
+    private List<TreeNode<T>> hijos;
     private int utility;
 
     public TreeNode(T data) {
         this.data = data;
-        this.children = new ArrayList<>();
+        this.hijos = new ArrayList<>();
         this.utility = 0;
     }
     public T getData() {
@@ -17,11 +17,11 @@ public class TreeNode<T> {
     public void setData(T data) {
         this.data = data;
     }
-    public List<TreeNode<T>> getChildren() {
-        return children;
+    public List<TreeNode<T>> getHijos() {
+        return hijos;
     }
-    public void addChild(TreeNode<T> child) {
-        this.children.add(child);
+    public void addChild(TreeNode<T> hijo) {
+        this.hijos.add(hijo);
     }
     public int getUtility() {
         return utility;
@@ -31,6 +31,6 @@ public class TreeNode<T> {
     }
 
     public boolean isLeaf() {
-        return children.isEmpty();
+        return hijos.isEmpty();
     }
 }

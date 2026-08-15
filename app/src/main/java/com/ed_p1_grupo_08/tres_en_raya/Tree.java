@@ -28,8 +28,8 @@ public class Tree <T>{
             return 0;
         }
         int count = 1; // Contamos este nodo
-        for (TreeNode<T> child : node.getHijos()) {
-            count += countNodes(child); // Llamada recursiva para los hijos
+        for (TreeNode<T> hijo : node.getHijos()) {
+            count += countNodes(hijo); // Llamada recursiva para los hijos
         }
         return count;
     }

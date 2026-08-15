@@ -1,21 +1,21 @@
 package com.ed_p1_grupo_08.tres_en_raya;
 
 public class Jugador {
-    private char simbolo;
+    private EstadoCelda simbolo;
     private String nombre;
     private boolean esComputadora;
 
-    public Jugador(char simbolo, String nombre, boolean esComputadora) {
+    public Jugador(EstadoCelda simbolo, String nombre, boolean esComputadora) {
         this.simbolo = simbolo;
         this.nombre = nombre;
         this.esComputadora = esComputadora;
     }
 
-    public char getSimbolo() {
+    public EstadoCelda getSimbolo() {
         return simbolo;
     }
 
-    public void setSimbolo(char simbolo) {
+    public void setSimbolo(EstadoCelda simbolo) {
         this.simbolo = simbolo;
     }
 

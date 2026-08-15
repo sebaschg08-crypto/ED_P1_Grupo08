@@ -33,10 +33,17 @@ public class Tablero {
                 for (int i= 0; i< celdas.length; i++){
                     Tablero clon= clonarTablero();
                     if (celdas[i]==EstadoCelda.VACIO){clon.getCeldas()[i]= c;}
+                    resultado.add(clon);
                 }
             }
 
             return resultado;
     }
 
+    public int contarLineas(){
+        // existen filas
+        // existen columnas
+        // existen 2 diagonales
+        return 1;
+    }
 }

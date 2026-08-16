@@ -1,4 +1,5 @@
 package com.ed_p1_grupo_08.test_consola;
+import java.util.Random;
 import java.util.Scanner;
 
 public class MainPrueba {
@@ -7,8 +8,16 @@ public class MainPrueba {
 
         Jugador humano = new Jugador(EstadoCelda.X, "Humano", false);
         Jugador pc = new Jugador(EstadoCelda.O, "Computadora", true);
-
-        ControladorJuego controlador = new ControladorJuego(humano, pc, humano);
+        Random generadorAzar = new Random();
+        Jugador jugadorQueEmpieza;
+        if (generadorAzar.nextBoolean()) {
+            jugadorQueEmpieza = jugador1;
+            System.out.println("¡Sorteo finalizado! Empieza: " + jugador1.getNombre());
+        } else {
+            jugadorQueEmpieza = jugador2;
+            System.out.println("¡Sorteo finalizado! Empieza: " + jugador2.getNombre());
+        }
+        ControladorJuego controlador = new ControladorJuego(jugador1, jugador2, jugadorQueEmpieza);
 
         System.out.println("¡Iniciando partida de Tres en Raya!");
         controlador.getTablero().imprimirConsola();

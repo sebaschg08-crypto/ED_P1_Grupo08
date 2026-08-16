@@ -17,5 +17,6 @@ public class ControladorJuego {
             Jugador humano = j1.isEsComputadora() ? j2 : j1;
             this.ia = new MinimaxAI(pc, humano);
         }
+
     }
 }

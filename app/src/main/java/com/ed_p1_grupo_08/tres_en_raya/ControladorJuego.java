@@ -19,4 +19,11 @@ public class ControladorJuego {
         }
 
     }
+    public Tablero getTablero() {
+        return tablero;
+    }
+    public Jugador getJugadorActual() {
+        return jugadorActual;
+    }
+
 }

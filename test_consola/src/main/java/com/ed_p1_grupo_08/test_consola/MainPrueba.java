@@ -6,9 +6,8 @@ public class MainPrueba {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Jugador humano = new Jugador(EstadoCelda.X, "Humano", false);
-        Jugador pc = new Jugador(EstadoCelda.O, "Computadora", true);
-        Random generadorAzar = new Random();
+        Jugador jugador1 = new Jugador(EstadoCelda.X, "Humano", false);
+        Jugador jugador2 = new Jugador(EstadoCelda.O, "Computadora", true);        Random generadorAzar = new Random();
         Jugador jugadorQueEmpieza;
         if (generadorAzar.nextBoolean()) {
             jugadorQueEmpieza = jugador1;

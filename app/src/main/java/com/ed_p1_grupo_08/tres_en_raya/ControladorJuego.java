@@ -40,7 +40,7 @@ public class ControladorJuego {
         }
     }
     public boolean jugarTurnoHumano(int posicion) {
-        if (juegoTerminado()) {
+        if (juegoTerminado() || jugadorActual.isEsComputadora()) {
             return false;
         }
         if (tablero.colocarFicha(posicion, jugadorActual.getSimbolo())) {
@@ -58,6 +58,13 @@ public class ControladorJuego {
                 cambiarTurno();
             }
         }
+    }
+    public boolean verificarEmpate(){
+        return this.tablero.isFull();
+    }
+    public String obtenerGanador(){
+        Jugador ganador= jugadorActual == jugador1 ? jugador2 : jugador1;
+        return ganador.getNombre()+" ("+ganador.getSimbolo()+")";
     }
 }
 

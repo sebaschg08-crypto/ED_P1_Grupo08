@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "tres_en_raya"
 include(":app")
+include(":test_consola")

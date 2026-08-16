@@ -39,4 +39,25 @@ public class ControladorJuego {
             jugadorActual = jugador1;
         }
     }
+    public boolean jugarTurnoHumano(int posicion) {
+        if (juegoTerminado()) {
+            return false;
+        }
+        if (tablero.colocarFicha(posicion, jugadorActual.getSimbolo())) {
+            cambiarTurno();
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void jugarTurnoPC() {
+        if (ia != null && jugadorActual.isEsComputadora() && !juegoTerminado()) {
+            Tablero mejorTablero = ia.obtenerMejorJugada(tablero);
+            if (mejorTablero != null){
+                this.tablero = mejorTablero;
+                cambiarTurno();
+            }
+        }
+    }
+        }
 }

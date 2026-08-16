@@ -78,4 +78,18 @@ public class Tablero {
         }
         return ganador;
     }
+    public void imprimirConsola() {
+        System.out.println();
+        for (int i = 0; i < celdas.length; i++) {
+            String simbolo = (celdas[i] == EstadoCelda.VACIO) ? String.valueOf(i) : celdas[i].toString();
+            System.out.print(" " + simbolo + " ");
+            if ((i + 1) % 3 == 0) {
+                System.out.println();
+                if (i < 8) System.out.println("---+---+---");
+            } else {
+                System.out.print("|");
+            }
+        }
+        System.out.println();
+    }
 }

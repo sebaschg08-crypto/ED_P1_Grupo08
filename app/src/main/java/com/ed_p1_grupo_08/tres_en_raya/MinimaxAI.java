@@ -21,14 +21,16 @@ public class MinimaxAI {
         for (Tablero jugadaPC : posiblesJugadasPC) {
             TreeNode<Tablero> nodoPC = new TreeNode<>(jugadaPC);
             arbol.getRaiz().addHijo(nodoPC);
+            int minUtilidadFamilia;
 
-            List<Tablero> posiblesJugadasOponente = jugadaPC.generarSucesores(oponente);
-
-            int minUtilidadFamilia = Integer.MAX_VALUE;
-
-            if (posiblesJugadasOponente.isEmpty()) {
+            // evaluamos si gano la pc o si esta llena
+            if (jugadaPC.hayGanador(jugadorPC.getSimbolo()) || jugadaPC.isFull()){
                 minUtilidadFamilia = CalculadoraUtilidad.evaluar(jugadaPC, jugadorPC, oponente);
+
             } else {
+                List<Tablero> posiblesJugadasOponente = jugadaPC.generarSucesores(oponente);
+                minUtilidadFamilia = Integer.MAX_VALUE;
+
                 for (Tablero jugadaOponente : posiblesJugadasOponente) {
                     TreeNode<Tablero> nodoOponente = new TreeNode<>(jugadaOponente);
 

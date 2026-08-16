@@ -1,13 +1,22 @@
 package com.ed_p1_grupo_08.tres_en_raya;
 import java.util.Scanner;
+import java.util.Random;
 public class MainPrueba {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         Jugador humano = new Jugador(EstadoCelda.X, "Humano", false);
         Jugador pc = new Jugador(EstadoCelda.O, "Computadora", true);
-
-        ControladorJuego controlador = new ControladorJuego(humano, pc, humano);
+        Random generadorAzar = new Random();
+        Jugador jugadorQueEmpieza;
+        if (generadorAzar.nextBoolean()) {
+            jugadorQueEmpieza = jugador1;
+            System.out.println("¡Sorteo finalizado! Empieza: " + jugador1.getNombre());
+        } else {
+            jugadorQueEmpieza = jugador2;
+            System.out.println("¡Sorteo finalizado! Empieza: " + jugador2.getNombre());
+        }
+        ControladorJuego controlador = new ControladorJuego(jugador1, jugador2, jugadorQueEmpieza);
 
         System.out.println("¡Iniciando partida de Tres en Raya!");
         controlador.getTablero().imprimirConsola();

@@ -37,8 +37,8 @@ public class MainPrueba {
         if (controlador.verificarEmpate()) {
             System.out.println("¡Es un empate!");
         } else {
-            Jugador oponente = (controlador.getJugadorActual() == humano) ? pc : humano;
-            System.out.println("¡El ganador es: " + oponente.getNombre() + " (" + oponente.getSimbolo() + ")!");
+            String oponente = controlador.obtenerGanador();
+            System.out.println("¡El ganador es:" + oponente);
         }
 
         scanner.close();

@@ -71,7 +71,7 @@ public class Tablero {
         // se gana si un jugador hace alguna linea
         boolean ganador= false;
         int i=0;
-        while (!ganador && i<9){
+        while (!ganador && i < lineas.length) {
             int[] linea = lineas[i];
             if (celdas[linea[0]]==jugador && celdas[linea[1]]==jugador && celdas[linea[2]]==jugador) ganador=true;
             i++;

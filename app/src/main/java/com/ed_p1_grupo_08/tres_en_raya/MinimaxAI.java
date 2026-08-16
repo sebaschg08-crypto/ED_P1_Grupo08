@@ -1,12 +1,11 @@
 package com.ed_p1_grupo_08.tres_en_raya;
 import java.util.List;
 public class MinimaxAI {
-    private CalculadoraUtilidad calculadora;
+    // no instancia de calculadora
     private Jugador jugadorPC;
     private Jugador oponente;
 
     public MinimaxAI(Jugador jugadorPC, Jugador oponente) {
-        this.calculadora = new CalculadoraUtilidad();
         this.jugadorPC = jugadorPC;
         this.oponente = oponente;
     }
@@ -28,12 +27,12 @@ public class MinimaxAI {
             int minUtilidadFamilia = Integer.MAX_VALUE;
 
             if (posiblesJugadasOponente.isEmpty()) {
-                minUtilidadFamilia = calculadora.evaluar(jugadaPC, jugadorPC, oponente);
+                minUtilidadFamilia = CalculadoraUtilidad.evaluar(jugadaPC, jugadorPC, oponente);
             } else {
                 for (Tablero jugadaOponente : posiblesJugadasOponente) {
                     TreeNode<Tablero> nodoOponente = new TreeNode<>(jugadaOponente);
 
-                    int utilidad = calculadora.evaluar(jugadaOponente, jugadorPC, oponente);
+                    int utilidad = CalculadoraUtilidad.evaluar(jugadaOponente, jugadorPC, oponente);
                     nodoOponente.setUtilidad(utilidad);
                     nodoPC.addHijo(nodoOponente);
 

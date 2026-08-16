@@ -25,4 +25,11 @@ public class ControladorJuego {
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
+
+    public boolean juegoTerminado(){
+        EstadoCelda j1= jugador1.getSimbolo();
+        EstadoCelda j2= jugador2.getSimbolo();
+        boolean alguienGano= (this.tablero.hayGanador(j1)||this.tablero.hayGanador(j2));
+        return this.tablero.isFull() || alguienGano;
+    }
 }

@@ -92,4 +92,11 @@ public class Tablero {
         }
         System.out.println();
     }
+    public EstadoCelda[] getCeldas() {
+        return celdas;
+    }
+
+    public int getOcupadas() {
+        return ocupadas;
+    }
 }

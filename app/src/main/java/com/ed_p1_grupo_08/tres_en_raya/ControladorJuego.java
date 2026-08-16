@@ -66,5 +66,54 @@ public class ControladorJuego {
         Jugador ganador= jugadorActual == jugador1 ? jugador2 : jugador1;
         return ganador.getNombre()+" ("+ganador.getSimbolo()+")";
     }
+    public String exportarEstado() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(jugador1.getSimbolo()).append(",")
+                .append(jugador1.getNombre()).append(",")
+                .append(jugador1.isEsComputadora()).append(";");
+
+        sb.append(jugador2.getSimbolo()).append(",")
+                .append(jugador2.getNombre()).append(",")
+                .append(jugador2.isEsComputadora()).append(";");
+
+        sb.append(jugadorActual.getSimbolo()).append(";");
+
+        EstadoCelda[] celdas = tablero.getCeldas();
+        for (int i = 0; i < celdas.length; i++) {
+            sb.append(celdas[i].name());
+            if (i < celdas.length - 1) sb.append(",");
+        }
+
+        sb.append(";").append(tablero.getOcupadas());
+
+        return sb.toString();
+    }
+    public static ControladorJuego cargarEstado(String datosGuardados) {
+        String[] partes = datosGuardados.split(";");
+
+        String[] p1Datos = partes[0].split(",");
+        Jugador j1 = new Jugador(EstadoCelda.valueOf(p1Datos[0]), p1Datos[1], Boolean.parseBoolean(p1Datos[2]));
+
+        String[] p2Datos = partes[1].split(",");
+        Jugador j2 = new Jugador(EstadoCelda.valueOf(p2Datos[0]), p2Datos[1], Boolean.parseBoolean(p2Datos[2]));
+
+        EstadoCelda turnoSimbolo = EstadoCelda.valueOf(partes[2]);
+        Jugador turnoActual = (j1.getSimbolo() == turnoSimbolo) ? j1 : j2;
+
+        ControladorJuego controladorRestaurado = new ControladorJuego(j1, j2, turnoActual);
+
+        String[] celdasDatos = partes[3].split(",");
+        EstadoCelda[] celdasRestauradas = new EstadoCelda[9];
+        for (int i = 0; i < 9; i++) {
+            celdasRestauradas[i] = EstadoCelda.valueOf(celdasDatos[i]);
+        }
+        int ocupadasRestauradas = Integer.parseInt(partes[4]);
+
+        controladorRestaurado.tablero = new Tablero(celdasRestauradas, ocupadasRestauradas);
+
+        return controladorRestaurado;
+    }
+
 }
 

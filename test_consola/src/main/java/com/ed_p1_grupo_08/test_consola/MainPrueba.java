@@ -24,7 +24,7 @@ public class MainPrueba {
         while (!controlador.juegoTerminado()) {
 
             if (!controlador.getJugadorActual().isEsComputadora()) {
-                System.out.println("Tu turno. Ingresa una posición libre (0-8): ");
+                System.out.println("Tu turno. Ingresa una posicion libre (0-8): ");
                 int posicion = scanner.nextInt();
 
                 boolean jugadaValida = controlador.jugarTurnoHumano(posicion);
@@ -32,11 +32,11 @@ public class MainPrueba {
                 if (jugadaValida) {
                     controlador.getTablero().imprimirConsola();
                 } else {
-                    System.out.println("Movimiento inválido. La casilla está ocupada o no existe.");
+                    System.out.println("Movimiento invalido. La casilla está ocupada o no existe.");
                 }
 
             } else {
-                System.out.println("La computadora está calculando su mejor jugada...");
+                System.out.println("La computadora esta calculando su mejor jugada...");
                 controlador.jugarTurnoPC();
                 controlador.getTablero().imprimirConsola();
             }
@@ -44,10 +44,10 @@ public class MainPrueba {
 
         System.out.println("\n--- FIN DEL JUEGO ---");
         if (controlador.verificarEmpate()) {
-            System.out.println("¡Es un empate!");
+            System.out.println("Es un empate!");
         } else {
             String oponente = controlador.obtenerGanador();
-            System.out.println("¡El ganador es:" + oponente);
+            System.out.println("El ganador es:" + oponente);
         }
 
         scanner.close();

@@ -25,5 +25,4 @@ public class ControladorJuego {
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
-
 }

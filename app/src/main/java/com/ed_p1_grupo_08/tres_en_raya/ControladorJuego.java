@@ -32,4 +32,11 @@ public class ControladorJuego {
         boolean alguienGano= (this.tablero.hayGanador(j1)||this.tablero.hayGanador(j2));
         return this.tablero.isFull() || alguienGano;
     }
+    private void cambiarTurno() {
+        if (jugadorActual == jugador1) {
+            jugadorActual = jugador2;
+        } else {
+            jugadorActual = jugador1;
+        }
+    }
 }

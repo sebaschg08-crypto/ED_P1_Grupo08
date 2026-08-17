@@ -22,40 +22,50 @@
         android:id="@+id/ElegirSimbolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
         android:text="@string/seleccionar_simbolo"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="130dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/elegirComienzo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="92dp"
         android:text="@string/seleccionar_inicio"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="356dp" />
+        app:layout_constraintBottom_toTopOf="@+id/elegirComputador"
+        app:layout_constraintStart_toEndOf="@+id/elegirComputador" />
 
     <TextView
         android:id="@+id/elegirComputador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
         android:text="@string/computadora"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="448dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/elegirHumano"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/elegirHumano"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="264dp"
         android:text="@string/humano"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="448dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/elegirComienzo" />
 
     <TextView
         android:id="@+id/jugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="135dp"
         android:text="@string/jugar"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="577dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

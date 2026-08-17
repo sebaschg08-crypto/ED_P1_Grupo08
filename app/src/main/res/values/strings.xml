@@ -1,3 +1,10 @@
 <resources>
+    // textos pantalla inicio
     <string name="app_name">tres_en_raya</string>
+    <string name="titulo_juego">TRES EN RAYA</string>
+    <string name="seleccionar_simbolo">Elige tu símbolo</string>
+    <string name="seleccionar_inicio">¿Quién comienza?</string>
+    <string name="humano">Usted</string>
+    <string name="computadora">Computadora</string>
+    <string name="jugar">Jugar</string>
 </resources>

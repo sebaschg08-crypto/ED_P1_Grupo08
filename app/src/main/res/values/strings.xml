@@ -1,10 +1,24 @@
 <resources>
-    // textos pantalla inicio
     <string name="app_name">tres_en_raya</string>
+
+    <!-- textos pantalla inicio -->
     <string name="titulo_juego">TRES EN RAYA</string>
     <string name="seleccionar_simbolo">Elige tu símbolo</string>
     <string name="seleccionar_inicio">¿Quién comienza?</string>
     <string name="humano">Usted</string>
     <string name="computadora">Computadora</string>
     <string name="jugar">Jugar</string>
+    <string name="seleccionarModo">Seleccione el modo de juego</string>
+    <string name="modoHvsPC">Humano vs Computadora</string>
+    <string name="modoHvsH">Humano vs Humano</string>
+    <string name="modoPCvsPC">Computadora vs Computadora</string>
+
+    <!-- textos pantalla juego -->
+    <string name="guardar">Guarda partida</string>
+    <string name="recomendar">Recomendar jugada</string>
+    <string name="analisis">Análisis de la jugada</string>
+
+    <!-- X y O -->
+    <string name="x">X</string>
+    <string name="o">O</string>
 </resources>

@@ -99,4 +99,18 @@ public class Tablero {
     public int getOcupadas() {
         return ocupadas;
     }
+    public String comoString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < celdas.length; i++) {
+            String simbolo = (celdas[i] == EstadoCelda.VACIO) ? "-" : celdas[i].toString();
+            sb.append(" ").append(simbolo).append(" ");
+
+            if ((i + 1) % 3 == 0) {
+                sb.append("\n");
+            } else {
+                sb.append("|");
+            }
+        }
+        return sb.toString();
+    }
 }

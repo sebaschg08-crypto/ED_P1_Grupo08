@@ -34,88 +34,109 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
+        android:layout_marginTop="28dp"
         android:text="@string/o"
         app:layout_constraintStart_toEndOf="@+id/btnX"
-        tools:layout_editor_absoluteY="419dp" />
+        app:layout_constraintTop_toBottomOf="@+id/ElegirSimbolo" />
 
     <Button
         android:id="@+id/btnX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="47dp"
         android:text="@string/x"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="419dp" />
+        app:layout_constraintEnd_toEndOf="@+id/btnComputador"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ElegirSimbolo" />
 
     <TextView
         android:id="@+id/elegirComienzo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/seleccionar_inicio"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="503dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnComputador"
+        app:layout_constraintEnd_toStartOf="@+id/btnHumano" />
 
     <Button
-        android:id="@+id/btonHumano"
+        android:id="@+id/btnHumano"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="54dp"
         android:text="@string/humano"
-        tools:layout_editor_absoluteX="269dp"
-        tools:layout_editor_absoluteY="552dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/elegirComienzo" />
 
     <Button
         android:id="@+id/btnComputador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/computadora"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="552dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnJugar"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btonJugar"
+        android:id="@+id/btnJugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="51dp"
         android:text="@string/jugar"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="632dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHumano" />
 
     <TextView
         android:id="@+id/seleccionModo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="23dp"
         android:text="@string/seleccionarModo"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="144dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnHvsPC"
+        app:layout_constraintStart_toStartOf="@+id/btnHvsPC" />
 
     <Button
         android:id="@+id/btnHvsPC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="@string/modoHvsPC"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="186dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnPCvsPC"
+        app:layout_constraintStart_toStartOf="@+id/btnPCvsPC" />
 
     <Button
         android:id="@+id/btnPCvsPC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="234dp"
         android:text="@string/modoPCvsPC"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="234dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnHvsH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:text="@string/modoHvsH"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="282dp" />
+        app:layout_constraintStart_toStartOf="@+id/btnPCvsPC"
+        app:layout_constraintTop_toBottomOf="@+id/btnPCvsPC" />
 
     <Button
-        android:id="@+id/btonCargar"
+        android:id="@+id/btnCargar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
         android:text="@string/cargar"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="62dp" />
+        app:layout_constraintStart_toStartOf="@+id/seleccionModo"
+        app:layout_constraintTop_toBottomOf="@+id/Titulo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

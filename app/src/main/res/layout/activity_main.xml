@@ -63,7 +63,7 @@
         tools:layout_editor_absoluteY="552dp" />
 
     <Button
-        android:id="@+id/elegirComputador"
+        android:id="@+id/btnComputador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/computadora"
@@ -87,7 +87,7 @@
         tools:layout_editor_absoluteY="144dp" />
 
     <Button
-        android:id="@+id/modoHvsPC"
+        android:id="@+id/btnHvsPC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/modoHvsPC"
@@ -95,7 +95,7 @@
         tools:layout_editor_absoluteY="186dp" />
 
     <Button
-        android:id="@+id/modoPCvsPC"
+        android:id="@+id/btnPCvsPC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/modoPCvsPC"
@@ -103,7 +103,7 @@
         tools:layout_editor_absoluteY="234dp" />
 
     <Button
-        android:id="@+id/modoHvsH"
+        android:id="@+id/btnHvsH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/modoHvsH"

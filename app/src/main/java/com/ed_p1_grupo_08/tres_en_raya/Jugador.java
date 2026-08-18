@@ -34,4 +34,9 @@ public class Jugador {
     public void setEsComputadora(boolean esComputadora) {
         this.esComputadora = esComputadora;
     }
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }

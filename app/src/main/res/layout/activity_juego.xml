@@ -22,10 +22,67 @@
         app:rowCount="3">
 
         <!-- solo es un ejemplo de como se veria -->
-        <!--<Button
+        <Button
+            android:id="@+id/btn0"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:text="0" /> -->
+            android:text=""
+            android:textSize="60sp"/>
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text=""
+            android:textSize="60sp"/>
 
 
     </androidx.gridlayout.widget.GridLayout>
@@ -34,31 +91,48 @@
         android:id="@+id/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/titulo_juego"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/guardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="13dp"
         android:text="@string/guardar"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="519dp" />
+        app:layout_constraintBottom_toTopOf="@+id/analizar"
+        app:layout_constraintStart_toStartOf="@+id/analizar" />
 
     <Button
         android:id="@+id/analizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
         android:text="@string/analisis"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="580dp" />
+        app:layout_constraintBottom_toTopOf="@+id/recomendar"
+        app:layout_constraintStart_toStartOf="@+id/recomendar" />
 
     <Button
         android:id="@+id/recomendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="46dp"
         android:text="@string/recomendar"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="637dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textoTurno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
+        android:text="__"
+        app:layout_constraintStart_toStartOf="@+id/Titulo"
+        app:layout_constraintTop_toBottomOf="@+id/Titulo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

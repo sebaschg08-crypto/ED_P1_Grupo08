@@ -1,142 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    <!-- pantalla principal -->
+    android:padding="24dp">
+
     <TextView
         android:id="@+id/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titulo_juego"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="TRES EN RAYA"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
-
-    <TextView
-        android:id="@+id/ElegirSimbolo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
-        android:text="@string/seleccionar_simbolo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnO"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnCargar"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/o"
-        app:layout_constraintStart_toEndOf="@+id/btnX"
-        app:layout_constraintTop_toBottomOf="@+id/ElegirSimbolo" />
-
-    <Button
-        android:id="@+id/btnX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="47dp"
-        android:text="@string/x"
-        app:layout_constraintEnd_toEndOf="@+id/btnComputador"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ElegirSimbolo" />
-
-    <TextView
-        android:id="@+id/elegirComienzo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/seleccionar_inicio"
-        app:layout_constraintBottom_toTopOf="@+id/btnComputador"
-        app:layout_constraintEnd_toStartOf="@+id/btnHumano" />
-
-    <Button
-        android:id="@+id/btnHumano"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="54dp"
-        android:text="@string/humano"
+        android:layout_marginTop="24dp"
+        android:text="Cargar partida"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/elegirComienzo" />
-
-    <Button
-        android:id="@+id/btnComputador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/computadora"
-        app:layout_constraintBottom_toTopOf="@+id/btnJugar"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnJugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="51dp"
-        android:text="@string/jugar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnHumano" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Titulo" />
 
     <TextView
         android:id="@+id/seleccionModo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="23dp"
-        android:text="@string/seleccionarModo"
-        app:layout_constraintBottom_toTopOf="@+id/btnHvsPC"
-        app:layout_constraintStart_toStartOf="@+id/btnHvsPC" />
-
-    <Button
-        android:id="@+id/btnHvsPC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/modoHvsPC"
-        app:layout_constraintBottom_toTopOf="@+id/btnPCvsPC"
-        app:layout_constraintStart_toStartOf="@+id/btnPCvsPC" />
-
-    <Button
-        android:id="@+id/btnPCvsPC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="234dp"
-        android:text="@string/modoPCvsPC"
+        android:layout_marginTop="32dp"
+        android:text="Seleccione el modo de juego"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCargar" />
 
-    <Button
-        android:id="@+id/btnHvsH"
+    <LinearLayout
+        android:id="@+id/grupoModos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="@string/modoHvsH"
-        app:layout_constraintStart_toStartOf="@+id/btnPCvsPC"
-        app:layout_constraintTop_toBottomOf="@+id/btnPCvsPC" />
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seleccionModo">
 
-    <Button
-        android:id="@+id/btnCargar"
+        <Button
+            android:id="@+id/btnHvsPC"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Humano vs Computadora" />
+
+        <Button
+            android:id="@+id/btnPCvsPC"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Computadora vs Computadora" />
+
+        <Button
+            android:id="@+id/btnHvsH"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Humano vs Humano" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ElegirSimbolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="27dp"
-        android:text="@string/cargar"
-        app:layout_constraintStart_toStartOf="@+id/seleccionModo"
-        app:layout_constraintTop_toBottomOf="@+id/Titulo" />
+        android:layout_marginTop="32dp"
+        android:text="Elige tu símbolo:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grupoModos" />
+
+    <LinearLayout
+        android:id="@+id/grupoSimbolos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ElegirSimbolo">
+
+        <Button
+            android:id="@+id/btnX"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="X" />
+
+        <Button
+            android:id="@+id/btnO"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="O" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/elegirComienzo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="¿Quién comienza?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grupoSimbolos" />
+
+      <LinearLayout
+        android:id="@+id/grupoComienza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/elegirComienzo">
+
+        <Button
+            android:id="@+id/btnComputador"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Computadora" />
+
+        <Button
+            android:id="@+id/btnHumano"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="Usted" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnJugar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Jugar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

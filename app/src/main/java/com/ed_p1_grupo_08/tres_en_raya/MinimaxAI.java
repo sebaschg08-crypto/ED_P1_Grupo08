@@ -5,6 +5,7 @@ public class MinimaxAI {
     private Jugador jugadorPC;
     private Jugador oponente;
 
+    public static Tree<Tablero> ultimoArbolGenerado;
     public MinimaxAI(Jugador jugadorPC, Jugador oponente) {
         this.jugadorPC = jugadorPC;
         this.oponente = oponente;
@@ -12,9 +13,8 @@ public class MinimaxAI {
 
     public Tablero obtenerMejorJugada(Tablero tableroActual) {
         Tree<Tablero> arbol = new Tree<>(tableroActual);
-
+        ultimoArbolGenerado = arbol;
         List<Tablero> posiblesJugadasPC = tableroActual.generarSucesores(jugadorPC);
-
         Tablero mejorJugada = null;
         int maxUtilidadMinima = Integer.MIN_VALUE;
 

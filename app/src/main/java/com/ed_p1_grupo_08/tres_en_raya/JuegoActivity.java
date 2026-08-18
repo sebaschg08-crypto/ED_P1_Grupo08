@@ -1,5 +1,6 @@
 package com.ed_p1_grupo_08.tres_en_raya;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -102,12 +103,26 @@ public class JuegoActivity extends AppCompatActivity {
 
         actualizarTablero();
 
-        if (controlador.juegoTerminado()) return;
+        if (controlador.juegoTerminado()){ finalizarJuego(); return;}
 
         controlador.jugarTurnoPC();
 
         actualizarTablero();
+        if (controlador.juegoTerminado()) {finalizarJuego();}
+    }
 
+    private void finalizarJuego(){
+        Intent intent= new Intent(JuegoActivity.this, ResultadoActivity.class);
+        if (!controlador.verificarEmpate()){
+            Jugador ganador= controlador.obtenerGanador();
+            intent.putExtra("resultado","Ganador: "+ganador.getNombre());
+            intent.putExtra("simboloGanador", ganador.getSimbolo().name());
+            intent.putExtra("empate",controlador.verificarEmpate());
+        }
+        else {intent.putExtra("resultado","Empate");}
+
+        startActivity(intent);
+        finish();
     }
 
 }

@@ -22,10 +22,10 @@
         app:rowCount="3">
 
         <!-- solo es un ejemplo de como se veria -->
-        <Button
+        <!--<Button
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:text="0" />
+            android:text="0" /> -->
 
 
     </androidx.gridlayout.widget.GridLayout>

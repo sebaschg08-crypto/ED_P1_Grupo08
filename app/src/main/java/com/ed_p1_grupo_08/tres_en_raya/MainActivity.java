@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnJugar.setOnClickListener(view -> {
             if (simboloHumano==null){
-                Toast.makeText(this, "Selecciona un simbolo",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Selecciona un simbolo", Toast.LENGTH_SHORT).show();
                 return;
             }
 

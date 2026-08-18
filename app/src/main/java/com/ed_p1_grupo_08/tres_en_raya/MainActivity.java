@@ -1,6 +1,7 @@
 package com.ed_p1_grupo_08.tres_en_raya;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
@@ -28,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnX = findViewById(R.id.btnX);
         Button btnO = findViewById(R.id.btnO);
 
-        Button btnHumano = findViewById(R.id.btnHumano); // Botón derecho
-        Button btnComputador = findViewById(R.id.btnComputador); // Botón izquierdo
+        Button btnHumano = findViewById(R.id.btnHumano);
+        Button btnComputador = findViewById(R.id.btnComputador);
 
         Button btnHvsH = findViewById(R.id.btnHvsH);
         Button btnHvsPC = findViewById(R.id.btnHvsPC);
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         actualizarGrupoTresBotones(btnHvsH, btnHvsPC, btnPCvsPC, 2);
         actualizarTextosSegunModo(2, txtElegirSimbolo, btnHumano, btnComputador);
 
-        //  EVENTOS SÍMBOLO
+        // EVENTOS
         btnX.setOnClickListener(v -> {
             simboloHumano = EstadoCelda.X;
             actualizarGrupoDosBotones(btnX, btnO, true);
@@ -54,17 +55,15 @@ public class MainActivity extends AppCompatActivity {
             actualizarGrupoDosBotones(btnX, btnO, false);
         });
 
-        // EVENTOS INICIO
         btnHumano.setOnClickListener(view -> {
-            empiezaHumano = true; // Representa el botón de la derecha
+            empiezaHumano = true;
             actualizarGrupoDosBotones(btnHumano, btnComputador, true);
         });
         btnComputador.setOnClickListener(view -> {
-            empiezaHumano = false; // Representa el botón de la izquierda
+            empiezaHumano = false;
             actualizarGrupoDosBotones(btnHumano, btnComputador, false);
         });
 
-        // EVENTOS MODO DE JUEGO
         btnHvsH.setOnClickListener(v -> {
             modoJuego = 1;
             actualizarGrupoTresBotones(btnHvsH, btnHvsPC, btnPCvsPC, 1);
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             actualizarTextosSegunModo(3, txtElegirSimbolo, btnHumano, btnComputador);
         });
 
-        // ACCIÓN JUGAR
+        // ACCIÓN JUGAR NUEVA PARTIDA
         btnJugar.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, JuegoActivity.class);
             intent.putExtra("simboloHumano", simboloHumano.name());
@@ -90,23 +89,34 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // ACCIÓN CARGAR PARTIDA GUARDADA
         btnCargar.setOnClickListener(v -> {
-            Toast.makeText(this, "Función cargar en construcción", Toast.LENGTH_SHORT).show();
+            // Abrimos la memoria interna de la app
+            SharedPreferences prefs = getSharedPreferences("TresEnRayaDatos", MODE_PRIVATE);
+            String estadoGuardado = prefs.getString("partidaGuardada", null);
+
+            if (estadoGuardado != null) {
+                // Si existe una partida, la enviamos al JuegoActivity
+                Intent intent = new Intent(MainActivity.this, JuegoActivity.class);
+                intent.putExtra("estadoGuardado", estadoGuardado);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "No hay ninguna partida guardada", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     // MÉTODOS AUXILIARES
-
     private void actualizarTextosSegunModo(int modo, TextView txtSimbolo, Button btnHumano, Button btnComputador) {
-        if (modo == 1) { // Humano vs Humano
+        if (modo == 1) {
             txtSimbolo.setText("Símbolo de Jugador 1:");
-            btnComputador.setText("Jugador 1"); // Pasa a ser Jugador 1
-            btnHumano.setText("Jugador 2");     // Pasa a ser Jugador 2
-        } else if (modo == 2) { // Humano vs PC
+            btnComputador.setText("Jugador 1");
+            btnHumano.setText("Jugador 2");
+        } else if (modo == 2) {
             txtSimbolo.setText("Elige tu símbolo:");
             btnComputador.setText("Computadora");
             btnHumano.setText("Usted");
-        } else if (modo == 3) { // PC vs PC
+        } else if (modo == 3) {
             txtSimbolo.setText("Símbolo de PC 1:");
             btnComputador.setText("PC 1");
             btnHumano.setText("PC 2");

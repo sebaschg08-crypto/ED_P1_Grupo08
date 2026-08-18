@@ -200,7 +200,7 @@ public class JuegoActivity extends AppCompatActivity {
         } else {
             intent.putExtra("resultado", "¡Es un Empate!");
         }
-
+        intent.putExtra("tableroFinal", controlador.getTablero().comoString());
         startActivity(intent);
         finish();
     }

@@ -25,7 +25,8 @@
     <string name="pantallaArbol">Árbol completo generado</string>
 
     <!-- textos pantalla resultados -->
-    <string name="resultados">Resultado de la partida</string>
+    <string name="resultadosTitulo">Resultado de la partida</string>
+
 
     <!-- X y O -->
     <string name="x">X</string>

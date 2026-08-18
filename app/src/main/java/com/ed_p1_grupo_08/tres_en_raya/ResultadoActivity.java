@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ResultadoActivity extends AppCompatActivity {
 
     private TextView resumen;
+    private TextView txtTableroFinal; // Nueva variable
     private Button btnRegresar;
 
     @Override
@@ -20,8 +21,12 @@ public class ResultadoActivity extends AppCompatActivity {
         boolean empate = getIntent().getBooleanExtra("empate", false);
         String resultado = getIntent().getStringExtra("resultado");
 
+        String tableroF = getIntent().getStringExtra("tableroFinal");
+
         resumen = findViewById(R.id.resultado);
+        txtTableroFinal = findViewById(R.id.tableroFinal);
         btnRegresar = findViewById(R.id.regresar);
+
         if (!empate) {
             String simboloGanador = getIntent().getStringExtra("simboloGanador");
             resumen.setText(resultado + " (" + simboloGanador + ")");
@@ -29,11 +34,14 @@ public class ResultadoActivity extends AppCompatActivity {
             resumen.setText(resultado);
         }
 
+        if (tableroF != null) {
+            txtTableroFinal.setText(tableroF);
+        }
+
         btnRegresar.setOnClickListener(v -> {
             Intent intent = new Intent(ResultadoActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
-
             finish();
         });
     }

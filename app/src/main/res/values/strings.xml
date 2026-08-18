@@ -12,11 +12,20 @@
     <string name="modoHvsPC">Humano vs Computadora</string>
     <string name="modoHvsH">Humano vs Humano</string>
     <string name="modoPCvsPC">Computadora vs Computadora</string>
+    <string name="cargar">Cargar partida</string>
 
     <!-- textos pantalla juego -->
     <string name="guardar">Guarda partida</string>
     <string name="recomendar">Recomendar jugada</string>
     <string name="analisis">Análisis de la jugada</string>
+
+    <!-- textos pantalla analisis -->
+
+    <!-- textos pantalla arbol -->
+    <string name="pantallaArbol">Árbol completo generado</string>
+
+    <!-- textos pantalla resultados -->
+    <string name="resultados">Resultado de la partida</string>
 
     <!-- X y O -->
     <string name="x">X</string>

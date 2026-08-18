@@ -1,6 +1,7 @@
 package com.ed_p1_grupo_08.tres_en_raya;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,11 @@ public class AnalisisActivity extends AppCompatActivity {
         setContentView(R.layout.activity_analisis);
 
         TextView analisisTexto = findViewById(R.id.analisisJugada);
+        Button btnRegresar = findViewById(R.id.btnRegresarAnalisis);
+
+        btnRegresar.setOnClickListener(v -> {
+            finish();
+        });
 
         if (MinimaxAI.ultimoArbolGenerado != null && MinimaxAI.ultimoArbolGenerado.getRaiz() != null) {
 
@@ -29,13 +35,10 @@ public class AnalisisActivity extends AppCompatActivity {
                 for (int i = 0; i < opciones.size(); i++) {
                     TreeNode<Tablero> nodo = opciones.get(i);
                     reporte.append("▶ Opción ").append(i + 1).append(":\n");
-
                     reporte.append("Puntaje (Utilidad): ").append(nodo.getUtilidad()).append("\n");
-
                     reporte.append(nodo.getDato().comoString()).append("\n");
                 }
             }
-
             analisisTexto.setText(reporte.toString());
 
         } else {

@@ -22,19 +22,19 @@ public class JuegoActivity extends AppCompatActivity {
     private Button btnAnalizar;
     private Button btnRecomendar;
 
+    private Handler handlerPC = new Handler(Looper.getMainLooper());
+    private Runnable runnablePC;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
 
         if (getIntent().hasExtra("estadoGuardado")) {
-            // --- CARGAR PARTIDA ---
             String estadoGuardado = getIntent().getStringExtra("estadoGuardado");
             controlador = ControladorJuego.cargarEstado(estadoGuardado);
             Toast.makeText(this, "Partida restaurada", Toast.LENGTH_SHORT).show();
-
         } else {
-            // NUEVA PARTIDA
             String simboloTxt = getIntent().getStringExtra("simboloHumano");
             boolean empiezaHumano = getIntent().getBooleanExtra("empiezaHumano", true);
             int modoJuego = getIntent().getIntExtra("modoJuego", 2);
@@ -137,7 +137,7 @@ public class JuegoActivity extends AppCompatActivity {
     private void ejecutarTurnoComputadoraConRetraso() {
         textoTurno.setText("Calculando...");
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+        runnablePC = () -> {
             if (!controlador.juegoTerminado()) {
                 controlador.jugarTurnoPC();
                 actualizarTablero();
@@ -148,7 +148,9 @@ public class JuegoActivity extends AppCompatActivity {
                     ejecutarTurnoComputadoraConRetraso();
                 }
             }
-        }, 1000);
+        };
+
+        handlerPC.postDelayed(runnablePC, 1000);
     }
 
     private void recomendarJugada() {
@@ -176,7 +178,6 @@ public class JuegoActivity extends AppCompatActivity {
 
     private void guardarPartida() {
         String estado = controlador.exportarEstado();
-
         SharedPreferences prefs = getSharedPreferences("TresEnRayaDatos", MODE_PRIVATE);
         prefs.edit().putString("partidaGuardada", estado).apply();
         Toast.makeText(this, "Partida guardada exitosamente", Toast.LENGTH_SHORT).show();
@@ -200,8 +201,17 @@ public class JuegoActivity extends AppCompatActivity {
         } else {
             intent.putExtra("resultado", "¡Es un Empate!");
         }
+
         intent.putExtra("tableroFinal", controlador.getTablero().comoString());
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (handlerPC != null && runnablePC != null) {
+            handlerPC.removeCallbacks(runnablePC);
+        }
     }
 }

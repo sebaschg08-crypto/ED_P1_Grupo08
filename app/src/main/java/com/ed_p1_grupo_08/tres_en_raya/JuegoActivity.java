@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,8 @@ public class JuegoActivity extends AppCompatActivity {
     private Handler handlerPC = new Handler(Looper.getMainLooper());
     private Runnable runnablePC;
 
+    protected int modoJuego;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +37,11 @@ public class JuegoActivity extends AppCompatActivity {
             String estadoGuardado = getIntent().getStringExtra("estadoGuardado");
             controlador = ControladorJuego.cargarEstado(estadoGuardado);
             Toast.makeText(this, "Partida restaurada", Toast.LENGTH_SHORT).show();
+            modoJuego = getIntent().getIntExtra("modoJuego", 2);
         } else {
             String simboloTxt = getIntent().getStringExtra("simboloHumano");
             boolean empiezaHumano = getIntent().getBooleanExtra("empiezaHumano", true);
-            int modoJuego = getIntent().getIntExtra("modoJuego", 2);
+            modoJuego = getIntent().getIntExtra("modoJuego", 2);
 
             if (simboloTxt == null) simboloTxt = "X";
             EstadoCelda simboloJ1 = EstadoCelda.valueOf(simboloTxt);
@@ -193,13 +197,60 @@ public class JuegoActivity extends AppCompatActivity {
         Intent intent = new Intent(JuegoActivity.this, ResultadoActivity.class);
         boolean empate = controlador.verificarEmpate();
         intent.putExtra("empate", empate);
+        intent.putExtra("modoJuego", modoJuego);
+
+        SharedPreferences prefs = getSharedPreferences("HistorialVictorias", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
 
         if (!empate) {
             Jugador ganador = controlador.obtenerGanador();
             intent.putExtra("resultado", "Ganador: " + ganador.getNombre());
             intent.putExtra("simboloGanador", ganador.getSimbolo().name());
+
+            if (modoJuego == 2) {
+                if (!ganador.isEsComputadora()) {
+                    int victoriasHum = prefs.getInt("victoriasHumano", 0) + 1;
+                    editor.putInt("victoriasHumano", victoriasHum);
+                } else {
+                    int victoriasComp = prefs.getInt("victoriasComputadora", 0) + 1;
+                    editor.putInt("victoriasComputadora", victoriasComp);
+                }
+            } else if (modoJuego == 1) {
+                if (ganador.getNombre().equals("Jugador 1")) {
+                    int vicJ1 = prefs.getInt("victoriasJ1", 0) + 1;
+                    editor.putInt("victoriasJ1", vicJ1);
+                } else {
+                    int vicJ2 = prefs.getInt("victoriasJ2", 0) + 1;
+                    editor.putInt("victoriasJ2", vicJ2);
+                }
+            }
         } else {
             intent.putExtra("resultado", "¡Es un Empate!");
+
+            if (modoJuego == 2) {
+                int empatesPC = prefs.getInt("empatesHvPC", 0) + 1;
+                editor.putInt("empatesHvPC", empatesPC);
+            } else if (modoJuego == 1) {
+                int empatesJcJ = prefs.getInt("empatesJcJ", 0) + 1;
+                editor.putInt("empatesJcJ", empatesJcJ);
+            } else if (modoJuego == 3) {
+                int empatesPCPC = prefs.getInt("empatesPCPC", 0) + 1;
+                editor.putInt("empatesPCPC", empatesPCPC);
+            }
+        }
+
+        editor.apply();
+
+        if (modoJuego == 2) {
+            intent.putExtra("victoriasJ1", prefs.getInt("victoriasHumano", 0));
+            intent.putExtra("victoriasPC", prefs.getInt("victoriasComputadora", 0));
+            intent.putExtra("registroEmpate", prefs.getInt("empatesHvPC", 0));
+        } else if (modoJuego == 1) {
+            intent.putExtra("victorias1", prefs.getInt("victoriasJ1", 0));
+            intent.putExtra("victorias2", prefs.getInt("victoriasJ2", 0));
+            intent.putExtra("empatesJcJ", prefs.getInt("empatesJcJ", 0));
+        } else if (modoJuego == 3) {
+            intent.putExtra("empatesPC", prefs.getInt("empatesPCPC", 0));
         }
 
         intent.putExtra("tableroFinal", controlador.getTablero().comoString());

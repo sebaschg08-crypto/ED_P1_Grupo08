@@ -27,6 +27,8 @@ public class ResultadoActivity extends AppCompatActivity {
         txtTableroFinal = findViewById(R.id.tableroFinal);
         btnRegresar = findViewById(R.id.regresar);
 
+
+
         if (!empate) {
             String simboloGanador = getIntent().getStringExtra("simboloGanador");
             resumen.setText(resultado + " (" + simboloGanador + ")");
